@@ -4,24 +4,19 @@ public class HTMLManager {
 	private Queue<HTMLTag> tags;
 
 	public HTMLManager(Queue<HTMLTag> tags) {
+		this.tags = new LinkedList<>();
 		if(tags == null) {
 			throw new IllegalArgumentException();
 		}
 		else {
-			this.tags = tags;
+			while(!tags.isEmpty()){
+				this.tags.add(tags.remove());
+			}
 		}
 	}
 
 	public Queue<HTMLTag> getTags() {
 		return this.tags;
-	}
-
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		for(HTMLTag tag : tags) {
-			builder.append(tag.toString());
-		}
-		return builder.toString();
 	}
 
 	public void fixHTML() {
@@ -48,9 +43,17 @@ public class HTMLManager {
 				}
 			}
 		}
-		while(!openTags.isEmpty()){
+		while(!openTags.isEmpty()) {
 			resultTags.add(openTags.pop().getMatching());
 		}
 		tags = resultTags;
+	}
+
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		for(HTMLTag tag : tags) {
+			builder.append(tag.toString().trim());
+		}
+		return builder.toString();
 	}
 }
