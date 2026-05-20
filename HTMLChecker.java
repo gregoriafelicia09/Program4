@@ -46,7 +46,7 @@ public class HTMLChecker {
 		System.out.println("HTML: " + manager);
 		System.out.println("Checking HTML for errors...");
 		manager.fixHTML();
-		System.out.println("HTML after fix: " + manager);
+		System.out.println("HTML after fix: \n" + manager);
 		return manager.toString();
 	}
 
