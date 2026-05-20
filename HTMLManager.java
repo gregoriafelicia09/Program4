@@ -15,4 +15,12 @@ public class HTMLManager {
 	public Queue<HTMLTag> getTags() {
 		return this.tags;
 	}
+
+	public String toString(){
+		StringBuilder builder = new StringBuilder();
+		for(HTMLTag tag : tags){
+			builder.append(tag.toString());
+		}
+		return builder.toString();
+	}
 }
